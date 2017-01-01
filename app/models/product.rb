@@ -13,4 +13,8 @@ class Product < ActiveRecord::Base
   # validates :description, length: { minimum: 10},
   validates_length_of :description, minimum: 10, 
                       message: "Description is too small. 10 characters min."
+
+  def self.latest
+    Product.order(:updated_at).last
+  end
 end
